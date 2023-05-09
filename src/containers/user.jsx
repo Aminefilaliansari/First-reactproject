@@ -3,9 +3,10 @@ import { Card, Skeleton } from "antd";
 import { useParams } from "react-router-dom";
 
 export default function User() {
-    const { userId } = useParams();
+    // const iduser = useParams().userId;
+    const { userId: iduser } = useParams();
     const [dataJsonID, setDataJsonID] = useState([]);
-    const url = `https://jsonplaceholder.typicode.com/users/${userId}`;
+    const url = `https://jsonplaceholder.typicode.com/users/${iduser}`;
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -26,7 +27,7 @@ export default function User() {
     console.log("dataJsonID: ", dataJsonID);
 
     return (
-        <div className=" Container mx-auto h-96 flex justify-center items-center">
+        <div className="container mx-auto h-96 flex justify-center items-center">
             <Skeleton loading={loading} active className="text-center w-1/3">
                 <Card
                     key={dataJsonID.id}
