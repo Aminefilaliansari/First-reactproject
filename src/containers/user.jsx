@@ -3,9 +3,9 @@ import { Card, Skeleton } from "antd";
 import { useParams } from "react-router-dom";
 
 export default function User() {
-    const iduser = useParams().userId;
+    const { userId } = useParams();
     const [dataJsonID, setDataJsonID] = useState([]);
-    const url = `https://jsonplaceholder.typicode.com/users/${iduser}`;
+    const url = `https://jsonplaceholder.typicode.com/users/${userId}`;
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -27,12 +27,12 @@ export default function User() {
 
     return (
         <div className=" Container mx-auto h-96 flex justify-center items-center">
-            <Card
-                key={dataJsonID.id}
-                title={`ID : ${dataJsonID.id}`}
-                className="text-center w-1/3 mx-auto shadow-lg shadow-purple-500"
-            >
-                <Skeleton loading={loading} active className="text-center w-1/3">
+            <Skeleton loading={loading} active className="text-center w-1/3">
+                <Card
+                    key={dataJsonID.id}
+                    title={`ID : ${dataJsonID.id}`}
+                    className="text-center w-1/3 mx-auto shadow-lg shadow-purple-500"
+                >
                     <b>Name: </b>
                     <span>{dataJsonID.name}</span>
                     <br />
@@ -45,8 +45,8 @@ export default function User() {
                     <b>Phone: </b>
                     <span> {dataJsonID.phone}</span>
                     <br />
-                </Skeleton>
-            </Card>
+                </Card>
+            </Skeleton>
         </div>
     );
 }
