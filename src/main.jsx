@@ -6,6 +6,7 @@ import Home from "./containers/home";
 import About from "./containers/about";
 import Contact from "./containers/contact";
 import Thanks from "./containers/thanks";
+import User from "./containers/user";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
                 path: "Thanks",
                 element: <Thanks />,
             },
+            {
+                path:"user/:userId",
+                element: <User/>
+            }
         ],
     },
 ]);
